@@ -29,26 +29,25 @@ public class BJ2961 {
 	}
 
 	// 부분조합 뽑기
-	private static void subCombination(int start, int total_sour, int total_bitter) {
+	private static void subCombination(int index, int total_sour, int total_bitter) {
 		
 		// 재료가 1개라도 선택 됐으면
 		if(total_bitter!=0) {
 			int sub = Math.abs(total_sour - total_bitter);
 			answer = answer<sub ? answer:sub;
 		}
-			
-		int sour, bitter;
-		for(int i=start; i<N; i++) {
-			
-			sour = ingredient.get(i).sour * total_sour;
-			bitter = ingredient.get(i).bitter + total_bitter;
 
-			// 해당 재료를 선택하는 경우
-			subCombination(i+1, sour, bitter);
+		if(index==N)
+			return;
+		
+		int	sour = ingredient.get(index).sour * total_sour;
+		int	bitter = ingredient.get(index).bitter + total_bitter;
+
+		// 해당 재료를 선택하는 경우
+		subCombination(index+1, sour, bitter);
 			
-			// 해당 재료를 선택하지 않는 경우
-			subCombination(i+1, total_sour, total_bitter);
-		}
+		// 해당 재료를 선택하지 않는 경우
+		subCombination(index+1, total_sour, total_bitter);
 	}
 }
 
