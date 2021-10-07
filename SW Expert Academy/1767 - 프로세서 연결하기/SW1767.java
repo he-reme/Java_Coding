@@ -1,5 +1,3 @@
-package hwalgo21_서울_8반_김혜림;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
